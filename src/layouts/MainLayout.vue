@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          101ta28.com
+          101ta28's Portfolio
         </q-toolbar-title>
 
       </q-toolbar>
@@ -27,7 +27,7 @@
         <q-item-label
           header
         >
-          Essential Links
+          メニュー
         </q-item-label>
 
         <EssentialLink
@@ -49,22 +49,22 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Profile',
+    title: 'プロフィール',
     icon: 'person',
-    link: 'https://quasar.dev'
+    link: '/profile'
   },
   {
-    title: 'Skill',
+    title: 'スキル',
     icon: 'lightbulb',
     link: 'https://chat.quasar.dev'
   },
   {
-    title: 'Works',
+    title: '成果物',
     icon: 'list',
     link: 'https://github.com/quasarframework'
   },
   {
-    title: 'Contact',
+    title: 'SNS等',
     icon: 'rss_feed',
     link: 'https://github.com/quasarframework'
   },

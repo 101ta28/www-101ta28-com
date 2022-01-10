@@ -5,8 +5,9 @@
         404
       </div>
 
-      <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+      <div class="text-h3" style="opacity:.4">
+        <p>望んでるようなページはないです!</p>
+        <p>ごめんね!!</p>
       </div>
 
       <q-btn
@@ -15,7 +16,7 @@
         text-color="blue"
         unelevated
         to="/"
-        label="Go Home"
+        label="トップに戻る"
         no-caps
       />
     </div>
