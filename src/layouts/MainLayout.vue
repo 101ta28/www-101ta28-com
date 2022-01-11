@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
+        <q-toolbar-title @click="$router.push('/')" style="cursor:pointer">
           101ta28's Portfolio
         </q-toolbar-title>
 
@@ -27,11 +27,11 @@
         <q-item-label
           header
         >
-          メニュー
+          Menu
         </q-item-label>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
+        <SideMenu
+          v-for="link in sideMenuLinks"
           :key="link.title"
           v-bind="link"
         />
@@ -45,28 +45,28 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import SideMenu from 'src/components/SideMenu.vue'
 
 const linksList = [
   {
-    title: 'プロフィール',
+    title: 'Profile',
     icon: 'person',
-    link: '/profile'
+    link: 'profile'
   },
   {
-    title: 'スキル',
-    icon: 'lightbulb',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: '成果物',
+    title: 'Works',
     icon: 'list',
-    link: 'https://github.com/quasarframework'
+    link: 'works'
   },
   {
-    title: 'SNS等',
+    title: 'Skill',
+    icon: 'lightbulb',
+    link: 'skill'
+  },
+  {
+    title: 'Contact',
     icon: 'rss_feed',
-    link: 'https://github.com/quasarframework'
+    link: 'sns'
   },
 ];
 
@@ -76,14 +76,14 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    SideMenu
   },
 
   setup () {
     const leftDrawerOpen = ref(false)
 
     return {
-      essentialLinks: linksList,
+      sideMenuLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value

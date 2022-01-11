@@ -5,9 +5,8 @@
         404
       </div>
 
-      <div class="text-h3" style="opacity:.4">
+      <div class="text-h2" style="opacity:.4">
         <p>望んでるようなページはないです!</p>
-        <p>ごめんね!!</p>
       </div>
 
       <q-btn

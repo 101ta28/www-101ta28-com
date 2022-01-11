@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <h1>This is Profile</h1>
+    <h1>This is Skill</h1>
   </q-page>
 </template>
 
