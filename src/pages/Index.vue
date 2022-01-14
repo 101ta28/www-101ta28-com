@@ -1,9 +1,12 @@
 <template>
-  <q-page class="column text-center">
+  <q-page class="text-center">
     <div>
       <h1>Tatsuya Imai's portfolio</h1>
       <h4>Web engineer</h4>
-      <q-separator />
+    </div>
+    <q-separator spaced inset />
+    <div>
+      <q-btn flat icon="person" label="Profile" to="{ hash: 'Profile' }" />
     </div>
     <div>
       <h3>Profile</h3>
