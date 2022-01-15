@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
+    <!-- <q-header elevated>
+      <q-toolbar> -->
         <!-- <q-btn
           flat
           dense
@@ -11,12 +11,12 @@
           @click="toggleLeftDrawer"
         /> -->
 
-        <q-toolbar-title @click="$router.push('/')" style="cursor:pointer">
+        <!-- <q-toolbar-title @click="$router.push('/')" style="cursor:pointer">
           101ta28's Portfolio
-        </q-toolbar-title>
+        </q-toolbar-title> -->
 
-      </q-toolbar>
-    </q-header>
+      <!-- </q-toolbar>
+    </q-header> -->
 
     <!-- <q-drawer
       v-model="leftDrawerOpen"

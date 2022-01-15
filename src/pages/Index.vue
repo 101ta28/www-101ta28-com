@@ -6,10 +6,14 @@
     </div>
     <q-separator spaced inset />
     <div>
-      <q-btn flat icon="person" label="Profile" to="{ hash: 'Profile' }" />
+      <q-btn flat icon="person" label="Profile" to="#profile"  />
+      <q-btn flat icon="code" label="Works" to="#works" />
     </div>
-    <div>
+    <div v-scroll="onScroll">
       <h3>Profile</h3>
+    </div>
+    <div id="#works">
+      <h3>Works</h3>
     </div>
   </q-page>
 </template>
@@ -19,5 +23,10 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "PageIndex",
+  setup() {
+    function onScroll(pos) {
+    }
+    return {onScroll}
+  }
 });
 </script>
