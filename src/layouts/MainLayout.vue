@@ -1,34 +1,35 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <!-- <q-header elevated>
-      <q-toolbar> -->
-        <!-- <q-btn
+    <q-header elevated>
+      <q-toolbar>
+        <q-btn
+          v-if="!$q.platform.is.desktop"
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        /> -->
+        />
 
-        <!-- <q-toolbar-title @click="$router.push('/')" style="cursor:pointer">
-          101ta28's Portfolio
-        </q-toolbar-title> -->
+        <q-toolbar-title> 101ta28's Portfolio </q-toolbar-title>
 
-      <!-- </q-toolbar>
-    </q-header> -->
+        <q-space />
 
-    <!-- <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
+        <q-btn-toggle
+          v-if="$q.platform.is.desktop"
+          v-model="model"
+          :options="options"
+          flat
+          stretch
+          toggle-color="dark"
+        />
+      </q-toolbar>
+    </q-header>
+
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label
-          header
-        >
-          Menu
-        </q-item-label>
+        <q-item-label header> Menu </q-item-label>
 
         <SideMenu
           v-for="link in sideMenuLinks"
@@ -36,7 +37,7 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer> -->
+    </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -45,50 +46,60 @@
 </template>
 
 <script>
-// import SideMenu from 'src/components/SideMenu.vue'
+import SideMenu from "src/components/SideMenu.vue";
 
-// const linksList = [
-//   {
-//     title: 'Profile',
-//     icon: 'person',
-//     link: 'profile'
-//   },
-//   {
-//     title: 'Works',
-//     icon: 'list',
-//     link: 'works'
-//   },
-//   {
-//     title: 'Skill',
-//     icon: 'lightbulb',
-//     link: 'skill'
-//   },
-//   {
-//     title: 'Contact',
-//     icon: 'rss_feed',
-//     link: 'sns'
-//   },
-// ];
+const linksList = [
+  {
+    title: "Profile",
+    icon: "person",
+    link: "profile",
+  },
+  {
+    title: "Works",
+    icon: "list",
+    link: "works",
+  },
+  {
+    title: "Skill",
+    icon: "lightbulb",
+    link: "skill",
+  },
+  {
+    title: "Contact",
+    icon: "rss_feed",
+    link: "contact",
+  },
+];
 
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from "vue";
+import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
-  // components: {
-  //   SideMenu
-  // },
+  components: {
+    SideMenu,
+  },
 
-  // setup () {
-  //   const leftDrawerOpen = ref(false)
+  setup() {
+    const leftDrawerOpen = ref(false);
+    const $q = useQuasar();
 
-  //   return {
-  //     sideMenuLinks: linksList,
-  //     leftDrawerOpen,
-  //     toggleLeftDrawer () {
-  //       leftDrawerOpen.value = !leftDrawerOpen.value
-  //     }
-  //   }
-  // }
-})
+    return {
+      sideMenuLinks: linksList,
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+      model: ref("home"),
+      options: [
+        { label: "Home", value: "/" },
+        { label: "Profile", value: "profile" },
+        { label: "Works", value: "works" },
+        { label: "Skill", value: "skill" },
+        { label: "Contact", value: "contact" },
+      ],
+    };
+  },
+});
 </script>

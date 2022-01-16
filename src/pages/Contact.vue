@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <h1>This is Sns</h1>
+    <h1>This is Contact</h1>
   </q-page>
 </template>
 
