@@ -8,7 +8,6 @@
     <div>
       <q-btn flat icon="person" label="Profile" to="profile" size="xl" />
       <q-btn flat icon="code" label="Works" to="works" size="xl"/>
-      <q-btn flat icon="settings_suggest" label="Skill" to="skill" size="xl"/>
       <q-btn flat icon="mail" label="Contact" to="contact" size="xl"/>
     </div>
   </q-page>

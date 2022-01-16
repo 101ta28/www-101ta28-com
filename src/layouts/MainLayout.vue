@@ -16,13 +16,37 @@
 
         <q-space />
 
-        <q-btn-toggle
+        <q-btn
           v-if="$q.platform.is.desktop"
-          v-model="model"
-          :options="options"
+          label="Home"
+          to="/"
+          style="cursor: pointer"
           flat
           stretch
-          toggle-color="dark"
+        />
+        <q-btn
+          v-if="$q.platform.is.desktop"
+          label="Profile"
+          to="profile"
+          style="cursor: pointer"
+          flat
+          stretch
+        />
+        <q-btn
+          v-if="$q.platform.is.desktop"
+          label="Works"
+          to="works"
+          style="cursor: pointer"
+          flat
+          stretch
+        />
+        <q-btn
+          v-if="$q.platform.is.desktop"
+          label="Contact"
+          to="contact"
+          style="cursor: pointer"
+          flat
+          stretch
         />
       </q-toolbar>
     </q-header>
@@ -60,11 +84,6 @@ const linksList = [
     link: "works",
   },
   {
-    title: "Skill",
-    icon: "lightbulb",
-    link: "skill",
-  },
-  {
     title: "Contact",
     icon: "rss_feed",
     link: "contact",
@@ -91,14 +110,6 @@ export default defineComponent({
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
-      model: ref("home"),
-      options: [
-        { label: "Home", value: "/" },
-        { label: "Profile", value: "profile" },
-        { label: "Works", value: "works" },
-        { label: "Skill", value: "skill" },
-        { label: "Contact", value: "contact" },
-      ],
     };
   },
 });
