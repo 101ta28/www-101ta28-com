@@ -16,7 +16,7 @@
 
         <q-space />
 
-        <q-btn
+        <!-- <q-btn
           v-if="$q.platform.is.desktop"
           label="Home"
           to="/"
@@ -47,7 +47,7 @@
           style="cursor: pointer"
           flat
           stretch
-        />
+        /> --!>
       </q-toolbar>
     </q-header>
 
