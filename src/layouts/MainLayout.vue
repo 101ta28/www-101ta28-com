@@ -47,7 +47,7 @@
           style="cursor: pointer"
           flat
           stretch
-        /> --!>
+        /> -->
       </q-toolbar>
     </q-header>
 
