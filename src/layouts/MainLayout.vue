@@ -12,7 +12,9 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> 101ta28's Portfolio </q-toolbar-title>
+        <q-toolbar-title v-if="$q.platform.is.desktop">
+          101ta28's Portfolio
+        </q-toolbar-title>
 
         <q-space />
 
@@ -51,7 +53,12 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer
+      v-if="!$q.platform.is.desktop"
+      v-model="leftDrawerOpen"
+      show-if-above
+      bordered
+    >
       <q-list>
         <q-item-label header> Menu </q-item-label>
 
