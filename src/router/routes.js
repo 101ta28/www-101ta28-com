@@ -5,9 +5,9 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'profile', component: () => import('pages/Profile.vue') },
-      { path: 'works', component: () => import('pages/Works.vue') },
-      { path: 'contact', component: () => import('pages/Contact.vue') },
+      // { path: 'profile', component: () => import('pages/Profile.vue') },
+      // { path: 'works', component: () => import('pages/Works.vue') },
+      // { path: 'contact', component: () => import('pages/Contact.vue') },
     ]
   },
 
