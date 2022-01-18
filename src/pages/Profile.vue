@@ -1,8 +1,11 @@
 <template>
   <q-page class="text-center">
-    <h2>Profile</h2>
+    <h2>
+      <q-icon name="person" />
+      Profile
+    </h2>
     <q-separator spaced inset />
-    <h3>自己紹介</h3>
+    <h5>自己紹介</h5>
     <div>
       <p class="text-body1">
         はじめまして。今井竜也と申します。
@@ -44,7 +47,7 @@ export default defineComponent({
         "python.svg",
         "rails.svg",
         "react.svg",
-        "quasar.svg"
+        "quasar.svg",
       ],
       links: [
         "https://code.visualstudio.com",
@@ -53,7 +56,7 @@ export default defineComponent({
         "https://www.python.org",
         "https://rubyonrails.org",
         "https://reactjs.org",
-        "https://quasar.dev"
+        "https://quasar.dev",
       ],
     };
   },

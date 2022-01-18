@@ -2,7 +2,7 @@
   <q-page class="text-center">
     <div>
       <h2>Tatsuya Imai's portfolio</h2>
-      <h4>Web engineer</h4>
+      <h4>Maker</h4>
     </div>
     <q-separator spaced inset />
     <div>
