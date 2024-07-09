@@ -5,8 +5,13 @@
 			101ta28
 		</v-app-bar-title>
 		<v-spacer></v-spacer>
-		<div v-if="isDesktop">
-			<v-btn v-for="link in links" :key="link.text" link color="white" :href="link.pageLink" class="text-capitalize"
+		<!-- <div v-if="isDesktop">
+			<v-btn v-for="link in links" :key="link.text" link :href="link.pageLink" class="text-capitalize"
+				:ripple="false">{{ link.text }}</v-btn>
+		</div> -->
+		<!-- !mobile -->
+		<div v-if="!isMobile">
+			<v-btn v-for="link in links" :key="link.text" link :href="link.pageLink" class="text-capitalize"
 				:ripple="false">{{ link.text }}</v-btn>
 		</div>
 		<!-- change dark light mode icon button -->
@@ -46,6 +51,5 @@ const links = ref([
 const display = useDisplay()
 
 const isMobile = display.mobile
-const isDesktop = display.desktop
 
 </script>
