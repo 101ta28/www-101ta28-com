@@ -68,8 +68,7 @@ pKz5KIHzHaO0BQJmKKhJAhsMBQkJZyBnAAoJEKz5KIHzHaO0YrYBAM2S6j8iArjH
 aX2ejqNilJTGV7Ehc/7FKq8HKp7b9F73AQDRME/+Z1vnUYix8zKdPvYtYlwq5IgN
 PD8PpYoIkpy8CQ==
 =0Zg/
------END PGP PUBLIC KEY BLOCK-----
-` },
+-----END PGP PUBLIC KEY BLOCK-----` },
 ])
 
 const openLink = (link) => {
