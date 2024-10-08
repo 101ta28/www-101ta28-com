@@ -15,19 +15,19 @@
             </v-card-title>
           </v-card>
         </v-col>
-        <!-- pgpDataList -->
-        <v-col cols="12" v-for="pgpData in pgpDataList" :key="pgpData.title">
+        <!-- gpgDataList -->
+        <v-col cols="12" v-for="gpgData in gpgDataList" :key="gpgData.title">
           <v-card class="mx-auto clickable" max-width="600">
             <v-card-title primary-title class="d-flex align-center justify-center">
-              <h4 class="text-h5 text-center">{{ pgpData.title }}</h4>
+              <h4 class="text-h5 text-center">{{ gpgData.title }}</h4>
             </v-card-title>
             <v-card-text>
               <v-row>
-                <v-col cols="12" v-if="pgpData.title !== 'PGP Publickey'">
-                  <v-text-field readonly dense rows="3" v-model="pgpData.text" />
+                <v-col cols="12" v-if="gpgData.title !== 'GPG Publickey'">
+                  <v-text-field readonly dense rows="3" v-model="gpgData.text" />
                 </v-col>
-                <v-col cols="12" v-else-if="pgpData.title === 'PGP Publickey'">
-                  <v-textarea readonly dense rows="10" v-model="pgpData.text" />
+                <v-col cols="12" v-else-if="gpgData.title === 'GPG Publickey'">
+                  <v-textarea readonly dense rows="10" v-model="gpgData.text" />
                 </v-col>
               </v-row>
             </v-card-text>
@@ -47,11 +47,11 @@ const contactList = ref([
   { title: 'Instagram', icon: 'mdi-instagram', link: 'https://www.instagram.com/101ta28/' },
 ])
 
-const pgpDataList = ref([
-  { title: 'PGP ID', text: 'ACF92881F31DA3B4' },
-  { title: 'PGP Fingerprint', text: 'DDEC7C9789DA48D8798F53A4ACF92881F31DA3B4' },
+const gpgDataList = ref([
+  { title: 'GPG ID', text: 'ACF92881F31DA3B4' },
+  { title: 'GPG Fingerprint', text: 'DDEC7C9789DA48D8798F53A4ACF92881F31DA3B4' },
   {
-    title: 'PGP Publickey', text: `-----BEGIN PGP PUBLIC KEY BLOCK-----
+    title: 'GPG Publickey', text: `-----BEGIN GPG PUBLIC KEY BLOCK-----
 
 mDMEZiioSRYJKwYBBAHaRw8BAQdAT9FdnAUKSwLmLTYsEGXlUUFNELIAbkslnQyQ
 m66imfW0IUltYWkgVGF0c3V5YSA8d29ya3RhMjhAZ21haWwuY29tPoiWBBMWCAA+
@@ -68,7 +68,7 @@ pKz5KIHzHaO0BQJmKKhJAhsMBQkJZyBnAAoJEKz5KIHzHaO0YrYBAM2S6j8iArjH
 aX2ejqNilJTGV7Ehc/7FKq8HKp7b9F73AQDRME/+Z1vnUYix8zKdPvYtYlwq5IgN
 PD8PpYoIkpy8CQ==
 =0Zg/
------END PGP PUBLIC KEY BLOCK-----` },
+-----END GPG PUBLIC KEY BLOCK-----` },
 ])
 
 const openLink = (link) => {
