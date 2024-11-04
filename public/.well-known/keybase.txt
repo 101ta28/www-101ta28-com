@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/101ta28
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://101ta28.com
+  * I am 101ta28 (https://keybase.io/101ta28) on keybase.
+  * I have a public key with fingerprint 8BE9 D9DD 3E23 C49E 7D4B  9973 2FDA 8EC1 A7D7 0768
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "010100031cca2f38cce3ff74ddbeb97c96e0dc416b94235813903dc336fd2c6f61e70a",
+      "fingerprint": "8be9d9dd3e23c49e7d4b99732fda8ec1a7d70768",
+      "host": "keybase.io",
+      "key_id": "2fda8ec1a7d70768",
+      "kid": "010100031cca2f38cce3ff74ddbeb97c96e0dc416b94235813903dc336fd2c6f61e70a",
+      "uid": "63adb4a44eabfaa7bea2ea1b07eeb419",
+      "username": "101ta28"
+    },
+    "service": {
+      "hostname": "101ta28.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1730730098,
+  "expire_in": 157680000,
+  "prev": "905351cef2f42d3f02fb41a14b75f857a74bb83500ab5d3b2bfcb87e8b112dce",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMIlAnicrVJtSBRBGD4/Ok3Qsg8jJKI9KyPR3Z3d293rh5RkWFAZUojSMbMzq4t6
+e+6tmtmVCmoWktUZEhIGUf24Qq0f9iNQ0UCMvggxLFJJK0jD0ECIbFbqR9DPmIFh
+3nme533ehxmMj3LERcxmVTQID3rrI0b62yocRaljZg2DDFzNeGqYErJykFJMApa3
+RMeMh2E5ulgWcKoKeQ3IqkqApkkCxoggRVIVN2GxKnBupAg8EGUOKCzAKgBuDfOq
+W3NzRGIhk8Zouq+ImH5T91lUVkZEwQrGgPBAFRQiYQEpigR4DUOZqByUsMRKbpkS
+i42AzaDmEAyQdN2gNXrxrtj7B/4/+65YkXMDiJEABYFApEEoIQJ5AjnESoQggVNs
+YICYPlhGKJr2tiAvM8E0hhYrdZXYudqD/A1IV40yyvSbhmWoRil9KLYsf8BjE61q
+v42sIsj7W8OLdB+mKVJGJTEDuuFjPBxFqpZui3ISYOlmFTmNIaf8ukm8uo0QaSw0
+CdbuQyqppMKKQORUovGawGOgsbxGR4CcgCRRk0UJSgJCMhBZFiIRA8QjTUWyRGTE
+cTyms9hTlfsMxiNSm7CISgb0Ih+0KkzCBAf6CqMdEXEO56pI+3c54lav/fPnXnXF
+LBeMbLkTn+TK/GzGftiZZUxN7Ciu63g+fii7vvaxEN18Eu3pzLuUe2XDGuf6A5HS
+9FRjuGrU0eK8/YW/GfpZvTxWXh+emplPmNu0rmrv06WPn7ZeGAx9e93Z9LIhZ3u4
+8uv8bH/ZiR+TXTPu7rnWHH0kaez6aE1rwsSxRjFjgd9cWsjVbWuDyYkjHU23Gnu8
+d49nWDGZ72PGzzUndMecTzl470Z+vp78ZB+3mJi/0Zm32N4W3J3XJrwdLnkY1TUk
+hpiehXCx893hXUZC6lJB71JK0HOkzHlm/7Ars2Eod/JR8tlrV9HA0eAzX+hyqqvl
+xUx7aKj2zcX7sa7pPtfp79kdvwCxbUEh
+=ijbM
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/101ta28
+
+==================================================================
