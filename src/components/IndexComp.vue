@@ -17,6 +17,8 @@
               Webアプリケーションの開発や、簡単なツール作成などをしています。
               <br />
               経歴やスキルなどは、<a href="https://github.com/101ta28/resume">https://github.com/101ta28/resume</a>をご覧ください。
+              <br />
+              技術から日常生活まで。雑記ブログは、<a href="https://blog.101ta28.com">https://blog.101ta28.com</a>をご覧ください。
             </p>
           </div>
         </v-col>
