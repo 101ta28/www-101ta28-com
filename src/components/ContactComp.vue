@@ -48,7 +48,6 @@ const contactList = ref([
 ])
 
 const gpgDataList = ref([
-  { title: 'GPG ID', text: 'ACF92881F31DA3B4' },
   { title: 'GPG Fingerprint', text: 'DDEC7C9789DA48D8798F53A4ACF92881F31DA3B4' },
   {
     title: 'GPG Publickey', text: `-----BEGIN PGP PUBLIC KEY BLOCK-----
