@@ -9,7 +9,7 @@
           <v-card class="mx-auto" max-width="344">
             <div v-if="work.img">
               <a :href="work.img" target="_blank">
-                <v-img :src="work.img" :aspect-ratio="16 / 9"></v-img>
+                <v-img :src="work.img" :aspect-ratio="16 / 9" />
               </a>
             </div>
             <div v-else>
@@ -20,14 +20,14 @@
             <v-card-title primary-title>
               <div>
                 <h6 class="headline mb-0" style="color: #FFA500">{{ work.year }}</h6>
-                <h4 class="headline mb-0" v-html="work.title.replace(/\n/g, '<br />')"></h4>
+                <h4 class="headline mb-0" v-html="work.title.replace(/\n/g, '<br />')" />
               </div>
             </v-card-title>
-            <v-divider></v-divider>
+            <v-divider />
             <v-card-text>
               <div>
-                <p v-html="work.text.replace(/\n/g, '<br />')"></p>
-                <v-divider></v-divider>
+                <p v-html="work.text.replace(/\n/g, '<br />')" />
+                <v-divider />
                 <p><b>使用技術</b><br>{{ work.tech }}</p>
               </div>
             </v-card-text>
