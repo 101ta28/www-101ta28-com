@@ -116,7 +116,16 @@ const links = ref([
 
 // Methods
 const toggleTheme = () => {
-  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
+  const newTheme = theme.global.current.value.dark ? 'light' : 'dark';
+  theme.global.name.value = newTheme;
+  sessionStorage.setItem('theme', newTheme);
+};
+
+const loadTheme = () => {
+  const savedTheme = sessionStorage.getItem('theme');
+  if (savedTheme) {
+    theme.global.name.value = savedTheme;
+  }
 };
 
 const isActiveRoute = (link) => {
@@ -133,6 +142,7 @@ const handleScroll = () => {
 // Lifecycle hooks
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
+  loadTheme();
 });
 
 onUnmounted(() => {

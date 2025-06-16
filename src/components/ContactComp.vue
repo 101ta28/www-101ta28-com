@@ -7,7 +7,7 @@
           <v-icon size="40" color="primary" class="mr-3">mdi-email-outline</v-icon>
           <h1 class="text-h3 text-md-h2 font-weight-bold">Contact</h1>
         </div>
-        <p class="text-h6 text-grey-darken-1 mb-0">
+        <p class="text-h6 text-medium-emphasis mb-0">
           お気軽にお声がけください
         </p>
       </v-col>
@@ -17,8 +17,8 @@
     <v-row class="justify-center mb-8">
       <v-col cols="12" md="10" lg="8">
         <v-card class="pa-6" elevation="2">
-          <v-card-title class="text-h5 text-center mb-6 text-grey-darken-3">
-            <v-icon left class="mr-2" color="grey-darken-3">mdi-account-network</v-icon>
+          <v-card-title class="text-h5 text-center mb-6 text-high-emphasis">
+            <v-icon left class="mr-2" color="primary">mdi-account-network</v-icon>
             連絡手段・SNS
           </v-card-title>
 
@@ -27,11 +27,11 @@
               <v-card class="w-100 text-center contact-card" elevation="1" hover @click="openLink(contact.link)"
                 :color="contact.color" variant="outlined">
                 <v-card-text class="py-6">
-                  <v-icon :color="contact.iconColor" size="48" class="mb-3">
+                  <v-icon :color="typeof contact.iconColor === 'string' ? contact.iconColor : contact.iconColor.value" size="48" class="mb-3">
                     {{ contact.icon }}
                   </v-icon>
-                  <h3 class="text-h6 font-weight-bold mb-2 text-grey-darken-3">{{ contact.title }}</h3>
-                  <p class="text-body-2 text-grey-darken-1 mb-0">{{ contact.description }}</p>
+                  <h3 class="text-h6 font-weight-bold mb-2 text-high-emphasis">{{ contact.title }}</h3>
+                  <p class="text-body-2 text-medium-emphasis mb-0">{{ contact.description }}</p>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -56,7 +56,7 @@
             </v-expansion-panel-title>
 
             <v-expansion-panel-text>
-              <v-card class="pa-4" elevation="0" color="grey-lighten-5">
+              <v-card class="pa-4" elevation="0">
                 <v-card-text>
                   <p class="text-body-2 mb-4">
                     セキュアな通信をご希望の場合は、GPG暗号化をご利用ください。
@@ -114,14 +114,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useTheme } from 'vuetify';
+
+const theme = useTheme();
 
 // Social Links
 const socialLinks = ref([
   {
     title: 'GitHub',
     icon: 'mdi-github',
-    iconColor: '#333',
+    iconColor: computed(() => theme.global.current.value.dark ? '#fff' : '#333'),
     color: 'grey-lighten-4',
     link: 'https://github.com/101ta28',
     description: 'コードとプロジェクト'

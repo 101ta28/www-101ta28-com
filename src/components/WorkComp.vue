@@ -7,7 +7,7 @@
           <v-icon size="40" color="primary" class="mr-3">mdi-code-tags</v-icon>
           <h1 class="text-h3 text-md-h2 font-weight-bold">Works</h1>
         </div>
-        <p class="text-h6 text-grey-darken-1 mb-0">
+        <p class="text-h6 text-medium-emphasis mb-0">
           これまでに携わった開発・制作物をご紹介します
         </p>
       </v-col>
@@ -46,8 +46,8 @@
                     </div>
                   </template>
                 </v-img>
-                <div v-else class="d-flex align-center justify-center bg-grey-lighten-3" style="height: 200px;">
-                  <v-icon size="64" color="grey-darken-1">mdi-image-off</v-icon>
+                <div v-else class="d-flex align-center justify-center bg-surface-variant" style="height: 200px;">
+                  <v-icon size="64" color="on-surface-variant">mdi-image-off</v-icon>
                 </div>
 
                 <!-- Year Badge -->
@@ -69,7 +69,7 @@
               </v-card-title>
 
               <v-card-text class="flex-grow-1 pb-2">
-                <p class="text-body-2 text-grey-darken-1 line-clamp-3 mb-4" v-html="work.text.replace(/\n/g, '<br />')">
+                <p class="text-body-2 text-medium-emphasis line-clamp-3 mb-4" v-html="work.text.replace(/\n/g, '<br />')">
                 </p>
 
                 <!-- Tech Stack -->
@@ -105,9 +105,9 @@
     <!-- Empty State -->
     <v-row v-if="filteredWorks.length === 0" class="justify-center">
       <v-col cols="12" class="text-center py-12">
-        <v-icon size="64" color="grey-darken-1" class="mb-4">mdi-magnify-close</v-icon>
-        <h3 class="text-h6 text-grey-darken-1 mb-2">該当する作品が見つかりません</h3>
-        <p class="text-body-2 text-grey-darken-2">フィルターを変更してお試しください</p>
+        <v-icon size="64" color="on-surface-variant" class="mb-4">mdi-magnify-close</v-icon>
+        <h3 class="text-h6 text-medium-emphasis mb-2">該当する作品が見つかりません</h3>
+        <p class="text-body-2 text-medium-emphasis">フィルターを変更してお試しください</p>
       </v-col>
     </v-row>
   </v-container>

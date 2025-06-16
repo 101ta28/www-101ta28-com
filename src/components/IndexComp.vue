@@ -12,11 +12,11 @@
           今井 竜也
         </h1>
 
-        <h2 class="text-subtitle-1 text-md-h6 mb-4 text-grey-darken-1">
+        <h2 class="text-subtitle-1 text-md-h6 mb-4 text-medium-emphasis">
           Web Developer & Software Engineer
         </h2>
 
-        <p class="text-body-2 text-md-body-1 mb-6 text-grey-darken-2">
+        <p class="text-body-2 text-md-body-1 mb-6 text-medium-emphasis">
           中学時代からプログラミングに魅力を感じ、<br class="d-none d-md-block">
           現在はWebアプリケーション開発を中心に活動しています
         </p>
@@ -52,8 +52,8 @@
           <v-card-text>
             <v-row>
               <v-col cols="12" md="6">
-                <h3 class="text-h6 mb-3">プロフィール</h3>
-                <p class="text-body-1 mb-3">
+                <h3 class="text-h6 mb-3 text-high-emphasis">プロフィール</h3>
+                <p class="text-body-1 mb-3 text-high-emphasis">
                   初めまして。今井 竜也と申します。<br>
                   中学時代にプログラミングに興味を持ち、なんやかんやで今に至ります。<br>
                   現在はWebアプリケーションの開発や、<br>
@@ -63,7 +63,7 @@
               </v-col>
 
               <v-col cols="12" md="6">
-                <h3 class="text-h6 mb-3">興味・関心</h3>
+                <h3 class="text-h6 mb-3 text-high-emphasis">興味・関心</h3>
                 <v-chip-group column>
                   <v-chip color="primary" variant="outlined">Web開発</v-chip>
                   <v-chip color="primary" variant="outlined">フロントエンド</v-chip>
@@ -145,18 +145,18 @@
     <!-- Contact Section -->
     <v-row class="justify-center">
       <v-col cols="12" md="8" lg="6">
-        <v-card class="pa-4" elevation="2" color="primary" dark>
-          <v-card-title class="text-h6 text-center mb-3">
+        <v-card class="pa-4" elevation="2" color="primary-darken-1">
+          <v-card-title class="text-h6 text-center mb-3 text-white">
             お気軽にお声がけください
           </v-card-title>
 
           <v-card-text class="text-center">
-            <v-btn variant="outlined" size="large" href="/contact" class="ma-2" prepend-icon="mdi-email">
+            <v-btn variant="outlined" size="large" href="/contact" class="ma-2" prepend-icon="mdi-email" color="white">
               お問い合わせ
             </v-btn>
 
             <v-btn class="text-none ma-2" variant="outlined" size="large" href="https://github.com/101ta28"
-              target="_blank" prepend-icon="mdi-github">
+              target="_blank" prepend-icon="mdi-github" color="white">
               GitHub
             </v-btn>
           </v-card-text>
