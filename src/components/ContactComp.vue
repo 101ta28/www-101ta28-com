@@ -1,56 +1,178 @@
 <template>
-  <v-container class="fill-height">
-    <v-responsive class="d-flex align-start text-center fill-height">
-      <v-icon class="text-h2">mdi-rss</v-icon>
-      <h2 class="text-h2">Contact</h2>
+  <v-container class="py-8">
+    <!-- Header Section -->
+    <v-row class="justify-center mb-8">
+      <v-col cols="12" class="text-center">
+        <div class="d-flex align-center justify-center mb-4">
+          <v-icon size="40" color="primary" class="mr-3">mdi-email-outline</v-icon>
+          <h1 class="text-h3 text-md-h2 font-weight-bold">Contact</h1>
+        </div>
+        <p class="text-h6 text-grey-darken-1 mb-0">
+          お気軽にお声がけください
+        </p>
+      </v-col>
+    </v-row>
 
-      <div class="py-3" />
+    <!-- Contact Methods Section -->
+    <v-row class="justify-center mb-8">
+      <v-col cols="12" md="10" lg="8">
+        <v-card class="pa-6" elevation="2">
+          <v-card-title class="text-h5 text-center mb-6 text-grey-darken-3">
+            <v-icon left class="mr-2" color="grey-darken-3">mdi-account-network</v-icon>
+            連絡手段・SNS
+          </v-card-title>
 
-      <v-row class="d-flex align-start justify-center">
-        <v-col cols="12" v-for="contact in contactList" :key="contact.title">
-          <v-card class="mx-auto clickable" max-width="600" @click="openLink(contact.link)">
-            <v-card-title primary-title class="d-flex align-center justify-center">
-              <v-icon class="text-h4">{{ contact.icon }}</v-icon>
-              <h4 class="text-h5 text-center">{{ contact.title }}</h4>
-            </v-card-title>
-          </v-card>
-        </v-col>
-        <!-- gpgDataList -->
-        <v-col cols="12" v-for="gpgData in gpgDataList" :key="gpgData.title">
-          <v-card class="mx-auto clickable" max-width="600">
-            <v-card-title primary-title class="d-flex align-center justify-center">
-              <h4 class="text-h5 text-center">{{ gpgData.title }}</h4>
-            </v-card-title>
-            <v-card-text>
-              <v-row>
-                <v-col cols="12" v-if="gpgData.title !== 'GPG Publickey'">
-                  <v-text-field readonly dense rows="3" v-model="gpgData.text" />
-                </v-col>
-                <v-col cols="12" v-else-if="gpgData.title === 'GPG Publickey'">
-                  <v-textarea readonly dense rows="10" v-model="gpgData.text" />
-                </v-col>
-              </v-row>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-responsive>
+          <v-row>
+            <v-col cols="12" sm="6" md="4" v-for="contact in socialLinks" :key="contact.title" class="d-flex">
+              <v-card class="w-100 text-center contact-card" elevation="1" hover @click="openLink(contact.link)"
+                :color="contact.color" variant="outlined">
+                <v-card-text class="py-6">
+                  <v-icon :color="contact.iconColor" size="48" class="mb-3">
+                    {{ contact.icon }}
+                  </v-icon>
+                  <h3 class="text-h6 font-weight-bold mb-2 text-grey-darken-3">{{ contact.title }}</h3>
+                  <p class="text-body-2 text-grey-darken-1 mb-0">{{ contact.description }}</p>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
+    </v-row>
+
+
+    <!-- GPG Information Section -->
+    <v-row class="justify-center">
+      <v-col cols="12" md="10" lg="8">
+        <v-expansion-panels class="mb-4">
+          <v-expansion-panel>
+            <v-expansion-panel-title>
+              <div class="d-flex align-center">
+                <v-icon class="mr-3">mdi-shield-key</v-icon>
+                <span class="text-h6">GPG暗号化情報</span>
+                <v-spacer></v-spacer>
+                <v-chip size="small" color="secondary" variant="outlined" class="ml-4">セキュリティ</v-chip>
+              </div>
+            </v-expansion-panel-title>
+
+            <v-expansion-panel-text>
+              <v-card class="pa-4" elevation="0" color="grey-lighten-5">
+                <v-card-text>
+                  <p class="text-body-2 mb-4">
+                    セキュアな通信をご希望の場合は、GPG暗号化をご利用ください。
+                  </p>
+
+                  <v-row>
+                    <v-col cols="12" md="6">
+                      <h4 class="text-subtitle-1 mb-2">
+                        <v-icon left size="small">mdi-fingerprint</v-icon>
+                        Fingerprint
+                      </h4>
+                      <v-text-field :value="gpgFingerprint" readonly variant="outlined" density="compact"
+                        append-inner-icon="mdi-content-copy"
+                        @click:append-inner="copyToClipboard(gpgFingerprint)"></v-text-field>
+                    </v-col>
+
+                    <v-col cols="12" md="6" class="d-flex align-center">
+                      <v-btn color="secondary" variant="outlined" @click="showPublicKey = !showPublicKey"
+                        :prepend-icon="showPublicKey ? 'mdi-eye-off' : 'mdi-eye'">
+                        {{ showPublicKey ? '公開鍵を隠す' : '公開鍵を表示' }}
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+
+                  <v-expand-transition>
+                    <div v-show="showPublicKey">
+                      <v-divider class="my-4"></v-divider>
+                      <h4 class="text-subtitle-1 mb-2">
+                        <v-icon left size="small">mdi-key-variant</v-icon>
+                        公開鍵
+                      </h4>
+                      <v-textarea :value="gpgPublicKey" readonly variant="outlined" rows="10" density="compact"
+                        class="font-monospace" append-inner-icon="mdi-content-copy"
+                        @click:append-inner="copyToClipboard(gpgPublicKey)"></v-textarea>
+                    </div>
+                  </v-expand-transition>
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-text>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-col>
+    </v-row>
+
+    <!-- Snackbar for notifications -->
+    <v-snackbar v-model="snackbar.show" :color="snackbar.color" :timeout="3000" location="top">
+      {{ snackbar.message }}
+      <template v-slot:actions>
+        <v-btn color="white" variant="text" @click="snackbar.show = false">
+          閉じる
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 
-const contactList = ref([
-  { title: 'Twitter', icon: 'mdi-twitter', link: 'https://twitter.com/101ta28' },
-  { title: 'GitHub', icon: 'mdi-github', link: 'https://github.com/101ta28' },
-  { title: 'Instagram', icon: 'mdi-instagram', link: 'https://www.instagram.com/101ta28/' },
-])
-
-const gpgDataList = ref([
-  { title: 'GPG Fingerprint', text: 'DDEC7C9789DA48D8798F53A4ACF92881F31DA3B4' },
+// Social Links
+const socialLinks = ref([
   {
-    title: 'GPG Publickey', text: `-----BEGIN PGP PUBLIC KEY BLOCK-----
+    title: 'GitHub',
+    icon: 'mdi-github',
+    iconColor: '#333',
+    color: 'grey-lighten-4',
+    link: 'https://github.com/101ta28',
+    description: 'コードとプロジェクト'
+  },
+  {
+    title: 'X (Twitter)',
+    icon: 'mdi-twitter',
+    iconColor: '#1DA1F2',
+    color: 'grey-lighten-4',
+    link: 'https://twitter.com/101ta28',
+    description: '日々の開発やプライベート'
+  },
+  {
+    title: 'Instagram',
+    icon: 'mdi-instagram',
+    iconColor: '#E4405F',
+    color: 'pink-lighten-5',
+    link: 'https://www.instagram.com/101ta28/',
+    description: '日常の写真や趣味'
+  },
+  {
+    title: 'Blog',
+    icon: 'mdi-post-outline',
+    iconColor: '#FF6B35',
+    color: 'orange-lighten-5',
+    link: 'https://blog.101ta28.com',
+    description: '技術記事と雑記'
+  },
+  {
+    title: 'LinkedIn',
+    icon: 'mdi-linkedin',
+    iconColor: '#0077B5',
+    color: 'blue-lighten-4',
+    link: 'https://linkedin.com/in/101ta28',
+    description: 'つながりとキャリア'
+  },
+  {
+    title: 'BlueSky',
+    icon: 'mdi-butterfly',
+    iconColor: '#00A4F1',
+    color: 'blue-lighten-4',
+    link: 'https://bsky.app/profile/101ta28.com',
+    description: 'たまにつぶやく場所'
+  },
+]);
+
+
+// GPG Information
+const showPublicKey = ref(false);
+const gpgFingerprint = ref('DDEC7C9789DA48D8798F53A4ACF92881F31DA3B4');
+const gpgPublicKey = ref(`-----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mDMEZiioSRYJKwYBBAHaRw8BAQdAT9FdnAUKSwLmLTYsEGXlUUFNELIAbkslnQyQ
 m66imfW0M0ltYWkgVGF0c3V5YSAoS0lUKSA8aW1haUBuZXB0dW5lLmthbmF6YXdh
@@ -83,10 +205,35 @@ j1OkrPkogfMdo7QFAmadrp8ACgkQrPkogfMdo7Rw5wEA4cta6t9zbjabc5CNkR5Q
 Qud1b6nBOVVkUU/EM2A3n7gA/29caNCAP5Qe2tBgOc4rFmbOwFlcks7XFlBRAhpt
 4kYE
 =bqle
------END PGP PUBLIC KEY BLOCK-----` },
-])
+-----END PGP PUBLIC KEY BLOCK-----`);
 
+// Snackbar for notifications
+const snackbar = ref({
+  show: false,
+  message: '',
+  color: 'success'
+});
+
+// Methods
 const openLink = (link) => {
-  window.open(link, '_blank')
-}
+  window.open(link, '_blank');
+};
+
+const copyToClipboard = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    snackbar.value = {
+      show: true,
+      message: 'クリップボードにコピーしました',
+      color: 'success'
+    };
+  } catch (err) {
+    snackbar.value = {
+      show: true,
+      message: 'コピーに失敗しました',
+      color: 'error'
+    };
+  }
+};
+
 </script>
