@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-bun.lockb
+bun.*
 /dist
 
 # local env files
