@@ -1,55 +1,212 @@
 <template>
-  <v-app-bar flat>
-    <v-app-bar-nav-icon v-if='isMobile' @click='drawer = !drawer' />
-    <v-app-bar-title>
-      101ta28
+  <v-app-bar elevation="1" color="surface" class="header-bar" :class="{ 'header-scrolled': isScrolled }">
+    <!-- Mobile Navigation Toggle -->
+    <v-app-bar-nav-icon v-if="isMobile" @click="drawer = !drawer" color="primary"></v-app-bar-nav-icon>
+
+    <!-- Logo/Brand Section -->
+    <v-app-bar-title class="d-flex align-center">
+      <v-btn href="/" variant="text" class="text-none pa-0 logo-btn" :ripple="false">
+        <div class="d-flex align-center">
+          <v-avatar size="32" class="mr-3">
+            <img src="/img/ta28-icon.webp" alt="101ta28 Logo" style="width: 100%; height: 100%;" />
+          </v-avatar>
+          <span class="text-h6 font-weight-bold text-primary">101ta28</span>
+        </div>
+      </v-btn>
     </v-app-bar-title>
-    <v-spacer />
-    <!-- <div v-if='isDesktop'>
-      <v-btn v-for='link in links' :key='link.text' link :href='link.pageLink' class='text-capitalize'
-        :ripple='false'>{{ link.text }}</v-btn>
-    </div> -->
-    <!-- !mobile -->
-    <div v-if='!isMobile'>
-      <v-btn v-for='link in links' :key='link.text' link :href='link.pageLink' class='text-capitalize'
-        :ripple='false'>{{ link.text }}</v-btn>
+
+    <v-spacer></v-spacer>
+
+    <!-- Desktop Navigation -->
+    <div v-if="!isMobile" class="d-flex align-center">
+      <v-btn v-for="link in links" :key="link.text" :href="link.pageLink" :target="link.external ? '_blank' : '_self'"
+        variant="text" class="mx-1 nav-btn" :class="{ 'nav-btn-active': isActiveRoute(link.pageLink) }"
+        :prepend-icon="link.icon" size="default">
+        {{ link.text }}
+      </v-btn>
+
+      <!-- Theme Toggle -->
+      <v-divider vertical class="mx-3"></v-divider>
+      <v-btn icon variant="text" @click="toggleTheme" class="theme-toggle-btn"
+        :title="theme.global.current.value.dark ? 'ライトモードに切替' : 'ダークモードに切替'">
+        <v-icon>
+          {{ theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' }}
+        </v-icon>
+      </v-btn>
     </div>
-    <!-- change dark light mode icon button -->
-    <v-btn icon @click='toggleTheme'>
-      <v-icon>{{ theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' }}</v-icon>
+
+    <!-- Mobile Theme Toggle -->
+    <v-btn v-if="isMobile" icon variant="text" @click="toggleTheme" class="theme-toggle-btn ml-2">
+      <v-icon>
+        {{ theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' }}
+      </v-icon>
     </v-btn>
   </v-app-bar>
-  <v-navigation-drawer v-model='drawer' app disable-resize-watcher>
-    <v-list dense>
-      <v-list-item v-for='link in links' :key='link.text' :href='link.pageLink' link>
-        <v-icon>{{ link.icon }}</v-icon>
-        <v-list-item-title>{{ link.text }}</v-list-item-title>
+
+  <!-- Mobile Navigation Drawer -->
+  <v-navigation-drawer v-model="drawer" temporary location="left" width="280" class="mobile-drawer">
+
+    <!-- Navigation Links -->
+    <v-list class="pa-2">
+      <v-list-item v-for="link in links" :key="link.text" :href="link.pageLink"
+        :target="link.external ? '_blank' : '_self'" class="mb-1 rounded-lg"
+        :class="{ 'bg-primary-lighten-4': isActiveRoute(link.pageLink) }" lines="one">
+        <template v-slot:prepend>
+          <v-icon :color="isActiveRoute(link.pageLink) ? 'primary' : 'grey-darken-1'">
+            {{ link.icon }}
+          </v-icon>
+        </template>
+
+        <v-list-item-title class="font-weight-medium" :class="{ 'text-primary': isActiveRoute(link.pageLink) }">
+          {{ link.text }}
+        </v-list-item-title>
+
+        <template v-slot:append v-if="link.external">
+          <v-icon size="small" color="grey-darken-1">mdi-open-in-new</v-icon>
+        </template>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useDisplay, useTheme } from 'vuetify'
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useTheme, useDisplay } from 'vuetify';
+import { useRoute } from 'vue-router';
 
-const theme = useTheme()
+const theme = useTheme();
+const display = useDisplay();
+const route = useRoute();
 
-function toggleTheme() {
-  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+// Reactive variables
+const drawer = ref(false);
+const scrollY = ref(0);
+
+// Computed properties
+const isMobile = computed(() => display.mobile.value);
+const isScrolled = computed(() => scrollY.value > 10);
+
+// Navigation links
+const links = ref([
+  {
+    icon: 'mdi-home',
+    text: 'Home',
+    pageLink: "/",
+    external: false
+  },
+  {
+    icon: 'mdi-code-tags',
+    text: 'Work',
+    pageLink: "/work",
+    external: false
+  },
+  {
+    icon: 'mdi-post-outline',
+    text: 'Blog',
+    pageLink: "https://blog.101ta28.com",
+    external: true
+  },
+  {
+    icon: 'mdi-email-outline',
+    text: 'Contact',
+    pageLink: "/contact",
+    external: false
+  },
+]);
+
+// Methods
+const toggleTheme = () => {
+  const newTheme = theme.global.current.value.dark ? 'light' : 'dark';
+  theme.global.name.value = newTheme;
+  sessionStorage.setItem('theme', newTheme);
+};
+
+const loadTheme = () => {
+  const savedTheme = sessionStorage.getItem('theme');
+  if (savedTheme) {
+    theme.global.name.value = savedTheme;
+  }
+};
+
+const isActiveRoute = (link) => {
+  if (link === '/') {
+    return route.path === '/';
+  }
+  return route.path.startsWith(link);
+};
+
+const handleScroll = () => {
+  scrollY.value = window.scrollY;
+};
+
+// Lifecycle hooks
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+  loadTheme();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+</script>
+
+<style scoped>
+.header-bar {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-const drawer = ref(false)
+.header-scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
 
-const links = ref([
-  { icon: 'mdi-home', text: 'Home', pageLink: '/' },
-  { icon: 'mdi-code-tags', text: 'Work', pageLink: '/work' },
-  { icon: 'mdi-post-outline', text: 'Blog', pageLink: 'https://blog.101ta28.com' },
-  { icon: 'mdi-rss', text: 'Contact', pageLink: '/contact' },
-])
+.logo-btn:hover {
+  background-color: transparent !important;
+}
 
-const display = useDisplay()
+.nav-btn {
+  text-transform: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
 
-const isMobile = display.mobile
+.nav-btn:hover {
+  background-color: rgba(var(--v-theme-primary), 0.1);
+  transform: translateY(-1px);
+}
 
-</script>
+.nav-btn-active {
+  background-color: rgba(var(--v-theme-primary), 0.15);
+  color: rgb(var(--v-theme-primary));
+}
+
+.theme-toggle-btn {
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: rotate(20deg);
+}
+
+.mobile-drawer {
+  backdrop-filter: blur(10px);
+}
+
+.mobile-drawer .v-list-item {
+  transition: all 0.2s ease;
+}
+
+.mobile-drawer .v-list-item:hover {
+  transform: translateX(4px);
+}
+
+.border-b {
+  border-bottom: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
+
+.border-t {
+  border-top: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
+</style>
