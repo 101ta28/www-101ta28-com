@@ -4,9 +4,10 @@
   "type": "module",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "wrangler dev",
     "build": "vite build",
     "preview": "vite preview",
+    "deploy": "wrangler deploy",
     "lint": "eslint . --fix"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "unplugin-vue-router": "^0.8.4",
     "vite": "^5.1.5",
     "vite-plugin-vuetify": "^2.0.3",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "wrangler": "^4.0.0"
   }
 }

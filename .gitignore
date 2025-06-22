@@ -2,6 +2,7 @@
 node_modules
 bun.*
 /dist
+.wrangler
 
 # local env files
 .env.local
