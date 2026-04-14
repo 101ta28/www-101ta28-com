@@ -69,7 +69,8 @@
               </v-card-title>
 
               <v-card-text class="flex-grow-1 pb-2">
-                <p class="text-body-2 text-medium-emphasis line-clamp-3 mb-4" v-html="work.text.replace(/\n/g, '<br />')">
+                <p class="text-body-2 text-medium-emphasis line-clamp-3 mb-4"
+                  v-html="work.text.replace(/\n/g, '<br />')">
                 </p>
 
                 <!-- Tech Stack -->
@@ -209,6 +210,16 @@ const works = ref([
     category: '研究開発',
     categoryColor: 'red'
   },
+  {
+    id: 9,
+    year: '2025',
+    title: '生成AIの資料作成',
+    text: '生成AIシステムに関する技術資料を作成し、負荷テスト結果や冗長化構成、運用方法、システムプロンプトの内容等をまとめました。',
+    tech: '生成AI',
+    techArray: ['生成AI'],
+    category: '資料作成',
+    categoryColor: 'purple'
+  },
 ]);
 
 // カテゴリーオプション
@@ -218,7 +229,8 @@ const categories = ref([
   { title: 'フロントエンド開発', value: 'フロントエンド開発' },
   { title: 'フルスタック開発', value: 'フルスタック開発' },
   { title: '研究開発', value: '研究開発' },
-  { title: '学習・教育', value: '学習・教育' }
+  { title: '学習・教育', value: '学習・教育' },
+  { title: '資料作成', value: '資料作成' },
 ]);
 
 // 技術スタックオプション
