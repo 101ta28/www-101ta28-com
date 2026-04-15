@@ -1,5 +1,7 @@
 name = "www-101ta28-com"
 compatibility_date = "2025-06-22"
+workers_dev = false
+preview_urls = false
 
 [assets]
 directory = "./dist"
