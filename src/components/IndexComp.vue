@@ -2,10 +2,22 @@
   <v-container class="py-8">
     <!-- Hero Section -->
     <v-row class="align-center justify-center">
-      <v-col cols="12" md="8" lg="6" class="text-center">
-        <v-avatar size="100" class="mb-4">
-          <img src="/img/ta28-icon.webp" alt="Profile Picture" class="rounded-circle"
-            style="width: 100%; height: 100%;" />
+      <v-col
+        cols="12"
+        md="8"
+        lg="6"
+        class="text-center"
+      >
+        <v-avatar
+          size="100"
+          class="mb-4"
+        >
+          <img
+            src="/img/ta28-icon.webp"
+            alt="Profile Picture"
+            class="rounded-circle"
+            style="width: 100%; height: 100%;"
+          >
         </v-avatar>
 
         <h1 class="text-h4 text-md-h3 mb-3 font-weight-bold">
@@ -23,17 +35,35 @@
 
         <!-- Quick Action Buttons -->
         <div class="mb-8">
-          <v-btn color="primary" size="large" href="/work" class="ma-2" prepend-icon="mdi-code-tags">
+          <v-btn
+            color="primary"
+            size="large"
+            href="/work"
+            class="ma-2"
+            prepend-icon="mdi-code-tags"
+          >
             作品を見る
           </v-btn>
 
-          <v-btn color="secondary" size="large" href="https://github.com/101ta28/resume" target="_blank" class="ma-2"
-            prepend-icon="mdi-file-document-outline">
+          <v-btn
+            color="secondary"
+            size="large"
+            href="https://github.com/101ta28/resume"
+            target="_blank"
+            class="ma-2"
+            prepend-icon="mdi-file-document-outline"
+          >
             履歴書
           </v-btn>
 
-          <v-btn variant="outlined" size="large" href="https://blog.101ta28.com" target="_blank" class="ma-2"
-            prepend-icon="mdi-post-outline">
+          <v-btn
+            variant="outlined"
+            size="large"
+            href="https://blog.101ta28.com"
+            target="_blank"
+            class="ma-2"
+            prepend-icon="mdi-post-outline"
+          >
             ブログ
           </v-btn>
         </div>
@@ -42,17 +72,34 @@
 
     <!-- About Section -->
     <v-row class="justify-center mb-8">
-      <v-col cols="12" md="10" lg="8">
-        <v-card class="pa-6" elevation="2">
+      <v-col
+        cols="12"
+        md="10"
+        lg="8"
+      >
+        <v-card
+          class="pa-6"
+          elevation="2"
+        >
           <v-card-title class="text-h5 text-center mb-4">
-            <v-icon left class="mr-2">mdi-account</v-icon>
+            <v-icon
+              left
+              class="mr-2"
+            >
+              mdi-account
+            </v-icon>
             About Me
           </v-card-title>
 
           <v-card-text>
             <v-row>
-              <v-col cols="12" md="6">
-                <h3 class="text-h6 mb-3 text-high-emphasis">プロフィール</h3>
+              <v-col
+                cols="12"
+                md="6"
+              >
+                <h3 class="text-h6 mb-3 text-high-emphasis">
+                  プロフィール
+                </h3>
                 <p class="text-body-1 mb-3 text-high-emphasis">
                   初めまして。今井 竜也と申します。<br>
                   中学時代にプログラミングに興味を持ち、なんやかんやで今に至ります。<br>
@@ -62,14 +109,44 @@
                 </p>
               </v-col>
 
-              <v-col cols="12" md="6">
-                <h3 class="text-h6 mb-3 text-high-emphasis">興味・関心</h3>
+              <v-col
+                cols="12"
+                md="6"
+              >
+                <h3 class="text-h6 mb-3 text-high-emphasis">
+                  興味・関心
+                </h3>
                 <v-chip-group column>
-                  <v-chip color="primary" variant="outlined">Web開発</v-chip>
-                  <v-chip color="primary" variant="outlined">フロントエンド</v-chip>
-                  <v-chip color="primary" variant="outlined">バックエンド</v-chip>
-                  <v-chip color="primary" variant="outlined">ツール開発</v-chip>
-                  <v-chip color="primary" variant="outlined">オープンソース</v-chip>
+                  <v-chip
+                    color="primary"
+                    variant="outlined"
+                  >
+                    Web開発
+                  </v-chip>
+                  <v-chip
+                    color="primary"
+                    variant="outlined"
+                  >
+                    フロントエンド
+                  </v-chip>
+                  <v-chip
+                    color="primary"
+                    variant="outlined"
+                  >
+                    バックエンド
+                  </v-chip>
+                  <v-chip
+                    color="primary"
+                    variant="outlined"
+                  >
+                    ツール開発
+                  </v-chip>
+                  <v-chip
+                    color="primary"
+                    variant="outlined"
+                  >
+                    オープンソース
+                  </v-chip>
                 </v-chip-group>
               </v-col>
             </v-row>
@@ -80,60 +157,131 @@
 
     <!-- Skills Section -->
     <v-row class="justify-center mb-8">
-      <v-col cols="12" md="10" lg="8">
+      <v-col
+        cols="12"
+        md="10"
+        lg="8"
+      >
         <h2 class="text-h5 text-center mb-6">
-          <v-icon left class="mr-2">mdi-tools</v-icon>
+          <v-icon
+            left
+            class="mr-2"
+          >
+            mdi-tools
+          </v-icon>
           技術スタック
         </h2>
 
         <v-row>
-          <v-col cols="12" md="4" class="mb-3">
-            <v-card class="pa-3 h-100" elevation="1">
+          <v-col
+            cols="12"
+            md="4"
+            class="mb-3"
+          >
+            <v-card
+              class="pa-3 h-100"
+              elevation="1"
+            >
               <v-card-title class="text-subtitle-1">
-                <v-icon left color="orange">mdi-language-html5</v-icon>
+                <v-icon
+                  left
+                  color="orange"
+                >
+                  mdi-language-html5
+                </v-icon>
                 フロントエンド
               </v-card-title>
               <v-card-text>
                 <v-chip-group column>
-                  <v-chip size="small">Vue.js</v-chip>
-                  <v-chip size="small">JavaScript</v-chip>
-                  <v-chip size="small">TypeScript</v-chip>
-                  <v-chip size="small">HTML/CSS</v-chip>
-                  <v-chip size="small">Vuetify</v-chip>
+                  <v-chip size="small">
+                    Vue.js
+                  </v-chip>
+                  <v-chip size="small">
+                    JavaScript
+                  </v-chip>
+                  <v-chip size="small">
+                    TypeScript
+                  </v-chip>
+                  <v-chip size="small">
+                    HTML/CSS
+                  </v-chip>
+                  <v-chip size="small">
+                    Vuetify
+                  </v-chip>
                 </v-chip-group>
               </v-card-text>
             </v-card>
           </v-col>
 
-          <v-col cols="12" md="4" class="mb-3">
-            <v-card class="pa-3 h-100" elevation="1">
+          <v-col
+            cols="12"
+            md="4"
+            class="mb-3"
+          >
+            <v-card
+              class="pa-3 h-100"
+              elevation="1"
+            >
               <v-card-title class="text-subtitle-1">
-                <v-icon left color="green">mdi-server</v-icon>
+                <v-icon
+                  left
+                  color="green"
+                >
+                  mdi-server
+                </v-icon>
                 バックエンド
               </v-card-title>
               <v-card-text>
                 <v-chip-group column>
-                  <v-chip size="small">Node.js</v-chip>
-                  <v-chip size="small">Python</v-chip>
-                  <v-chip size="small">Express</v-chip>
-                  <v-chip size="small">API開発</v-chip>
+                  <v-chip size="small">
+                    Node.js
+                  </v-chip>
+                  <v-chip size="small">
+                    Python
+                  </v-chip>
+                  <v-chip size="small">
+                    Express
+                  </v-chip>
+                  <v-chip size="small">
+                    API開発
+                  </v-chip>
                 </v-chip-group>
               </v-card-text>
             </v-card>
           </v-col>
 
-          <v-col cols="12" md="4" class="mb-3">
-            <v-card class="pa-3 h-100" elevation="1">
+          <v-col
+            cols="12"
+            md="4"
+            class="mb-3"
+          >
+            <v-card
+              class="pa-3 h-100"
+              elevation="1"
+            >
               <v-card-title class="text-subtitle-1">
-                <v-icon left color="blue">mdi-hammer-wrench</v-icon>
+                <v-icon
+                  left
+                  color="blue"
+                >
+                  mdi-hammer-wrench
+                </v-icon>
                 ツール・その他
               </v-card-title>
               <v-card-text>
                 <v-chip-group column>
-                  <v-chip size="small">Git</v-chip>
-                  <v-chip size="small">GitHub</v-chip>
-                  <v-chip size="small">Docker</v-chip>
-                  <v-chip size="small">Linux</v-chip>
+                  <v-chip size="small">
+                    Git
+                  </v-chip>
+                  <v-chip size="small">
+                    GitHub
+                  </v-chip>
+                  <v-chip size="small">
+                    Docker
+                  </v-chip>
+                  <v-chip size="small">
+                    Linux
+                  </v-chip>
                 </v-chip-group>
               </v-card-text>
             </v-card>
@@ -144,19 +292,41 @@
 
     <!-- Contact Section -->
     <v-row class="justify-center">
-      <v-col cols="12" md="8" lg="6">
-        <v-card class="pa-4" elevation="2" color="primary-darken-1">
+      <v-col
+        cols="12"
+        md="8"
+        lg="6"
+      >
+        <v-card
+          class="pa-4"
+          elevation="2"
+          color="primary-darken-1"
+        >
           <v-card-title class="text-h6 text-center mb-3 text-white">
             お気軽にお声がけください
           </v-card-title>
 
           <v-card-text class="text-center">
-            <v-btn variant="outlined" size="large" href="/contact" class="ma-2" prepend-icon="mdi-email" color="white">
+            <v-btn
+              variant="outlined"
+              size="large"
+              href="/contact"
+              class="ma-2"
+              prepend-icon="mdi-email"
+              color="white"
+            >
               お問い合わせ
             </v-btn>
 
-            <v-btn class="text-none ma-2" variant="outlined" size="large" href="https://github.com/101ta28"
-              target="_blank" prepend-icon="mdi-github" color="white">
+            <v-btn
+              class="text-none ma-2"
+              variant="outlined"
+              size="large"
+              href="https://github.com/101ta28"
+              target="_blank"
+              prepend-icon="mdi-github"
+              color="white"
+            >
               GitHub
             </v-btn>
           </v-card-text>

@@ -1,34 +1,74 @@
 <template>
-  <v-app-bar elevation="1" color="surface" class="header-bar" :class="{ 'header-scrolled': isScrolled }">
+  <v-app-bar
+    elevation="1"
+    color="surface"
+    class="header-bar"
+    :class="{ 'header-scrolled': isScrolled }"
+  >
     <!-- Mobile Navigation Toggle -->
-    <v-app-bar-nav-icon v-if="isMobile" @click="drawer = !drawer" color="primary"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon
+      v-if="isMobile"
+      color="primary"
+      @click="drawer = !drawer"
+    />
 
     <!-- Logo/Brand Section -->
     <v-app-bar-title class="d-flex align-center">
-      <v-btn href="/" variant="text" class="text-none pa-0 logo-btn" :ripple="false">
+      <v-btn
+        href="/"
+        variant="text"
+        class="text-none pa-0 logo-btn"
+        :ripple="false"
+      >
         <div class="d-flex align-center">
-          <v-avatar size="32" class="mr-3">
-            <img src="/img/ta28-icon.webp" alt="101ta28 Logo" style="width: 100%; height: 100%;" />
+          <v-avatar
+            size="32"
+            class="mr-3"
+          >
+            <img
+              src="/img/ta28-icon.webp"
+              alt="101ta28 Logo"
+              style="width: 100%; height: 100%;"
+            >
           </v-avatar>
           <span class="text-h6 font-weight-bold text-primary">101ta28</span>
         </div>
       </v-btn>
     </v-app-bar-title>
 
-    <v-spacer></v-spacer>
+    <v-spacer />
 
     <!-- Desktop Navigation -->
-    <div v-if="!isMobile" class="d-flex align-center">
-      <v-btn v-for="link in links" :key="link.text" :href="link.pageLink" :target="link.external ? '_blank' : '_self'"
-        variant="text" class="mx-1 nav-btn" :class="{ 'nav-btn-active': isActiveRoute(link.pageLink) }"
-        :prepend-icon="link.icon" size="default">
+    <div
+      v-if="!isMobile"
+      class="d-flex align-center"
+    >
+      <v-btn
+        v-for="link in links"
+        :key="link.text"
+        :href="link.pageLink"
+        :target="link.external ? '_blank' : '_self'"
+        variant="text"
+        class="mx-1 nav-btn"
+        :class="{ 'nav-btn-active': isActiveRoute(link.pageLink) }"
+        :prepend-icon="link.icon"
+        size="default"
+      >
         {{ link.text }}
       </v-btn>
 
       <!-- Theme Toggle -->
-      <v-divider vertical class="mx-3"></v-divider>
-      <v-btn icon variant="text" @click="toggleTheme" class="theme-toggle-btn"
-        :title="theme.global.current.value.dark ? 'ライトモードに切替' : 'ダークモードに切替'">
+      <v-divider
+        vertical
+        class="mx-3"
+      />
+      <v-btn
+        icon
+        variant="text"
+        class="theme-toggle-btn"
+        :title="theme.global.current.value.dark ? 'ライトモードに切替' : 'ダークモードに切替'"
+        @click="toggleTheme"
+      >
         <v-icon>
           {{ theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' }}
         </v-icon>
@@ -36,7 +76,13 @@
     </div>
 
     <!-- Mobile Theme Toggle -->
-    <v-btn v-if="isMobile" icon variant="text" @click="toggleTheme" class="theme-toggle-btn ml-2">
+    <v-btn
+      v-if="isMobile"
+      icon
+      variant="text"
+      class="theme-toggle-btn ml-2"
+      @click="toggleTheme"
+    >
       <v-icon>
         {{ theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' }}
       </v-icon>
@@ -44,25 +90,47 @@
   </v-app-bar>
 
   <!-- Mobile Navigation Drawer -->
-  <v-navigation-drawer v-model="drawer" temporary location="left" width="280" class="mobile-drawer">
-
+  <v-navigation-drawer
+    v-model="drawer"
+    temporary
+    location="left"
+    width="280"
+    class="mobile-drawer"
+  >
     <!-- Navigation Links -->
     <v-list class="pa-2">
-      <v-list-item v-for="link in links" :key="link.text" :href="link.pageLink"
-        :target="link.external ? '_blank' : '_self'" class="mb-1 rounded-lg"
-        :class="{ 'bg-primary-lighten-4': isActiveRoute(link.pageLink) }" lines="one">
-        <template v-slot:prepend>
+      <v-list-item
+        v-for="link in links"
+        :key="link.text"
+        :href="link.pageLink"
+        :target="link.external ? '_blank' : '_self'"
+        class="mb-1 rounded-lg"
+        :class="{ 'bg-primary-lighten-4': isActiveRoute(link.pageLink) }"
+        lines="one"
+      >
+        <template #prepend>
           <v-icon :color="isActiveRoute(link.pageLink) ? 'primary' : 'grey-darken-1'">
             {{ link.icon }}
           </v-icon>
         </template>
 
-        <v-list-item-title class="font-weight-medium" :class="{ 'text-primary': isActiveRoute(link.pageLink) }">
+        <v-list-item-title
+          class="font-weight-medium"
+          :class="{ 'text-primary': isActiveRoute(link.pageLink) }"
+        >
           {{ link.text }}
         </v-list-item-title>
 
-        <template v-slot:append v-if="link.external">
-          <v-icon size="small" color="grey-darken-1">mdi-open-in-new</v-icon>
+        <template
+          v-if="link.external"
+          #append
+        >
+          <v-icon
+            size="small"
+            color="grey-darken-1"
+          >
+            mdi-open-in-new
+          </v-icon>
         </template>
       </v-list-item>
     </v-list>
@@ -91,26 +159,26 @@ const links = ref([
   {
     icon: 'mdi-home',
     text: 'Home',
-    pageLink: "/",
-    external: false
+    pageLink: '/',
+    external: false,
   },
   {
     icon: 'mdi-code-tags',
     text: 'Work',
-    pageLink: "/work",
-    external: false
+    pageLink: '/work',
+    external: false,
   },
   {
     icon: 'mdi-post-outline',
     text: 'Blog',
-    pageLink: "https://blog.101ta28.com",
-    external: true
+    pageLink: 'https://blog.101ta28.com',
+    external: true,
   },
   {
     icon: 'mdi-email-outline',
     text: 'Contact',
-    pageLink: "/contact",
-    external: false
+    pageLink: '/contact',
+    external: false,
   },
 ]);
 

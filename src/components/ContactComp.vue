@@ -2,10 +2,21 @@
   <v-container class="py-8">
     <!-- Header Section -->
     <v-row class="justify-center mb-8">
-      <v-col cols="12" class="text-center">
+      <v-col
+        cols="12"
+        class="text-center"
+      >
         <div class="d-flex align-center justify-center mb-4">
-          <v-icon size="40" color="primary" class="mr-3">mdi-email-outline</v-icon>
-          <h1 class="text-h3 text-md-h2 font-weight-bold">Contact</h1>
+          <v-icon
+            size="40"
+            color="primary"
+            class="mr-3"
+          >
+            mdi-email-outline
+          </v-icon>
+          <h1 class="text-h3 text-md-h2 font-weight-bold">
+            Contact
+          </h1>
         </div>
         <p class="text-h6 text-medium-emphasis mb-0">
           お気軽にお声がけください
@@ -15,23 +26,57 @@
 
     <!-- Contact Methods Section -->
     <v-row class="justify-center mb-8">
-      <v-col cols="12" md="10" lg="8">
-        <v-card class="pa-6" elevation="2">
+      <v-col
+        cols="12"
+        md="10"
+        lg="8"
+      >
+        <v-card
+          class="pa-6"
+          elevation="2"
+        >
           <v-card-title class="text-h5 text-center mb-6 text-high-emphasis">
-            <v-icon left class="mr-2" color="primary">mdi-account-network</v-icon>
+            <v-icon
+              left
+              class="mr-2"
+              color="primary"
+            >
+              mdi-account-network
+            </v-icon>
             連絡手段・SNS
           </v-card-title>
 
           <v-row>
-            <v-col cols="12" sm="6" md="4" v-for="contact in socialLinks" :key="contact.title" class="d-flex">
-              <v-card class="w-100 text-center contact-card" elevation="1" hover @click="openLink(contact.link)"
-                :color="contact.color" variant="outlined">
+            <v-col
+              v-for="contact in socialLinks"
+              :key="contact.title"
+              cols="12"
+              sm="6"
+              md="4"
+              class="d-flex"
+            >
+              <v-card
+                class="w-100 text-center contact-card"
+                elevation="1"
+                hover
+                :color="contact.color"
+                variant="outlined"
+                @click="openLink(contact.link)"
+              >
                 <v-card-text class="py-6">
-                  <v-icon :color="typeof contact.iconColor === 'string' ? contact.iconColor : contact.iconColor.value" size="48" class="mb-3">
+                  <v-icon
+                    :color="typeof contact.iconColor === 'string' ? contact.iconColor : contact.iconColor.value"
+                    size="48"
+                    class="mb-3"
+                  >
                     {{ contact.icon }}
                   </v-icon>
-                  <h3 class="text-h6 font-weight-bold mb-2 text-high-emphasis">{{ contact.title }}</h3>
-                  <p class="text-body-2 text-medium-emphasis mb-0">{{ contact.description }}</p>
+                  <h3 class="text-h6 font-weight-bold mb-2 text-high-emphasis">
+                    {{ contact.title }}
+                  </h3>
+                  <p class="text-body-2 text-medium-emphasis mb-0">
+                    {{ contact.description }}
+                  </p>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -43,39 +88,76 @@
 
     <!-- GPG Information Section -->
     <v-row class="justify-center">
-      <v-col cols="12" md="10" lg="8">
+      <v-col
+        cols="12"
+        md="10"
+        lg="8"
+      >
         <v-expansion-panels class="mb-4">
           <v-expansion-panel>
             <v-expansion-panel-title>
               <div class="d-flex align-center">
-                <v-icon class="mr-3">mdi-shield-key</v-icon>
+                <v-icon class="mr-3">
+                  mdi-shield-key
+                </v-icon>
                 <span class="text-h6">GPG暗号化情報</span>
-                <v-spacer></v-spacer>
-                <v-chip size="small" color="secondary" variant="outlined" class="ml-4">セキュリティ</v-chip>
+                <v-spacer />
+                <v-chip
+                  size="small"
+                  color="secondary"
+                  variant="outlined"
+                  class="ml-4"
+                >
+                  セキュリティ
+                </v-chip>
               </div>
             </v-expansion-panel-title>
 
             <v-expansion-panel-text>
-              <v-card class="pa-4" elevation="0">
+              <v-card
+                class="pa-4"
+                elevation="0"
+              >
                 <v-card-text>
                   <p class="text-body-2 mb-4">
                     セキュアな通信をご希望の場合は、GPG暗号化をご利用ください。
                   </p>
 
                   <v-row>
-                    <v-col cols="12" md="6">
+                    <v-col
+                      cols="12"
+                      md="6"
+                    >
                       <h4 class="text-subtitle-1 mb-2">
-                        <v-icon left size="small">mdi-fingerprint</v-icon>
+                        <v-icon
+                          left
+                          size="small"
+                        >
+                          mdi-fingerprint
+                        </v-icon>
                         Fingerprint
                       </h4>
-                      <v-text-field :value="gpgFingerprint" readonly variant="outlined" density="compact"
+                      <v-text-field
+                        :value="gpgFingerprint"
+                        readonly
+                        variant="outlined"
+                        density="compact"
                         append-inner-icon="mdi-content-copy"
-                        @click:append-inner="copyToClipboard(gpgFingerprint)"></v-text-field>
+                        @click:append-inner="copyToClipboard(gpgFingerprint)"
+                      />
                     </v-col>
 
-                    <v-col cols="12" md="6" class="d-flex align-center">
-                      <v-btn color="secondary" variant="outlined" @click="showPublicKey = !showPublicKey"
-                        :prepend-icon="showPublicKey ? 'mdi-eye-off' : 'mdi-eye'">
+                    <v-col
+                      cols="12"
+                      md="6"
+                      class="d-flex align-center"
+                    >
+                      <v-btn
+                        color="secondary"
+                        variant="outlined"
+                        :prepend-icon="showPublicKey ? 'mdi-eye-off' : 'mdi-eye'"
+                        @click="showPublicKey = !showPublicKey"
+                      >
                         {{ showPublicKey ? '公開鍵を隠す' : '公開鍵を表示' }}
                       </v-btn>
                     </v-col>
@@ -83,14 +165,26 @@
 
                   <v-expand-transition>
                     <div v-show="showPublicKey">
-                      <v-divider class="my-4"></v-divider>
+                      <v-divider class="my-4" />
                       <h4 class="text-subtitle-1 mb-2">
-                        <v-icon left size="small">mdi-key-variant</v-icon>
+                        <v-icon
+                          left
+                          size="small"
+                        >
+                          mdi-key-variant
+                        </v-icon>
                         公開鍵
                       </h4>
-                      <v-textarea :value="gpgPublicKey" readonly variant="outlined" rows="10" density="compact"
-                        class="font-monospace" append-inner-icon="mdi-content-copy"
-                        @click:append-inner="copyToClipboard(gpgPublicKey)"></v-textarea>
+                      <v-textarea
+                        :value="gpgPublicKey"
+                        readonly
+                        variant="outlined"
+                        rows="10"
+                        density="compact"
+                        class="font-monospace"
+                        append-inner-icon="mdi-content-copy"
+                        @click:append-inner="copyToClipboard(gpgPublicKey)"
+                      />
                     </div>
                   </v-expand-transition>
                 </v-card-text>
@@ -102,10 +196,19 @@
     </v-row>
 
     <!-- Snackbar for notifications -->
-    <v-snackbar v-model="snackbar.show" :color="snackbar.color" :timeout="3000" location="top">
+    <v-snackbar
+      v-model="snackbar.show"
+      :color="snackbar.color"
+      :timeout="3000"
+      location="top"
+    >
       {{ snackbar.message }}
-      <template v-slot:actions>
-        <v-btn color="white" variant="text" @click="snackbar.show = false">
+      <template #actions>
+        <v-btn
+          color="white"
+          variant="text"
+          @click="snackbar.show = false"
+        >
           閉じる
         </v-btn>
       </template>
@@ -127,7 +230,7 @@ const socialLinks = ref([
     iconColor: computed(() => theme.global.current.value.dark ? '#fff' : '#333'),
     color: 'grey-lighten-4',
     link: 'https://github.com/101ta28',
-    description: 'コードとプロジェクト'
+    description: 'コードとプロジェクト',
   },
   {
     title: 'X (Twitter)',
@@ -135,7 +238,7 @@ const socialLinks = ref([
     iconColor: '#1DA1F2',
     color: 'grey-lighten-4',
     link: 'https://twitter.com/101ta28',
-    description: '日々の開発やプライベート'
+    description: '日々の開発やプライベート',
   },
   {
     title: 'Instagram',
@@ -143,7 +246,7 @@ const socialLinks = ref([
     iconColor: '#E4405F',
     color: 'pink-lighten-5',
     link: 'https://www.instagram.com/101ta28/',
-    description: '日常の写真や趣味'
+    description: '日常の写真や趣味',
   },
   {
     title: 'Blog',
@@ -151,7 +254,7 @@ const socialLinks = ref([
     iconColor: '#FF6B35',
     color: 'orange-lighten-5',
     link: 'https://blog.101ta28.com',
-    description: '技術記事と雑記'
+    description: '技術記事と雑記',
   },
   {
     title: 'LinkedIn',
@@ -159,7 +262,7 @@ const socialLinks = ref([
     iconColor: '#0077B5',
     color: 'blue-lighten-4',
     link: 'https://linkedin.com/in/101ta28',
-    description: 'つながりとキャリア'
+    description: 'つながりとキャリア',
   },
   {
     title: 'BlueSky',
@@ -167,7 +270,7 @@ const socialLinks = ref([
     iconColor: '#00A4F1',
     color: 'blue-lighten-4',
     link: 'https://bsky.app/profile/101ta28.com',
-    description: 'たまにつぶやく場所'
+    description: 'たまにつぶやく場所',
   },
 ]);
 
@@ -214,7 +317,7 @@ Qud1b6nBOVVkUU/EM2A3n7gA/29caNCAP5Qe2tBgOc4rFmbOwFlcks7XFlBRAhpt
 const snackbar = ref({
   show: false,
   message: '',
-  color: 'success'
+  color: 'success',
 });
 
 // Methods
@@ -222,19 +325,19 @@ const openLink = (link) => {
   window.open(link, '_blank');
 };
 
-const copyToClipboard = async (text) => {
+const copyToClipboard = async(text) => {
   try {
     await navigator.clipboard.writeText(text);
     snackbar.value = {
       show: true,
       message: 'クリップボードにコピーしました',
-      color: 'success'
+      color: 'success',
     };
   } catch (err) {
     snackbar.value = {
       show: true,
       message: 'コピーに失敗しました',
-      color: 'error'
+      color: 'error',
     };
   }
 };
