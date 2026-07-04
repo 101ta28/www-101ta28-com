@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Not Found | 101ta28 Site"
+  description="指定されたページは見つかりませんでした。"
+  canonicalPath="/"
+  robots="noindex,follow"
+>
+  <section class="page-hero section">
+    <div class="container narrow centered">
+      <p class="eyebrow">404</p>
+      <h1>ページが見つかりません</h1>
+      <p>URLをご確認いただくか、ホームから目的のページへ移動してください。</p>
+      <div class="action-row centered">
+        <a class="button button-primary" href="/">ホームへ戻る</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

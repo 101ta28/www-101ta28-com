@@ -1,0 +1,82 @@
+---
+import WorkCard from '../components/WorkCard.astro';
+import { works } from '../data/works.js';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sortedWorks = [...works].sort((a, b) => {
+  const yearDiff = Number(b.year) - Number(a.year);
+  if (yearDiff !== 0) return yearDiff;
+  return b.id - a.id;
+});
+---
+
+<BaseLayout
+  title="Work | 101ta28 Site"
+  description="101ta28の制作実績と開発経験を紹介します。"
+  canonicalPath="/work"
+>
+  <section class="page-hero section">
+    <div class="container narrow centered">
+      <p class="eyebrow">Works</p>
+      <h1>Works</h1>
+      <p>これまでに携わった開発・制作物をご紹介します。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="work-grid">
+        {sortedWorks.map((work) => <WorkCard work={work} />)}
+      </div>
+    </div>
+  </section>
+
+  <dialog class="image-lightbox" aria-label="作品画像の拡大表示">
+    <div class="image-lightbox-inner">
+      <div class="image-lightbox-header">
+        <p class="image-lightbox-title"></p>
+        <button class="image-lightbox-close" type="button" aria-label="閉じる">×</button>
+      </div>
+      <img class="image-lightbox-image" src="" alt="" width="1280" height="720" />
+    </div>
+  </dialog>
+
+  <script>
+    const dialog = document.querySelector('.image-lightbox');
+    const dialogImage = document.querySelector('.image-lightbox-image');
+    const dialogTitle = document.querySelector('.image-lightbox-title');
+    const closeButton = document.querySelector('.image-lightbox-close');
+
+    document.querySelectorAll('[data-lightbox-src]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const src = button.getAttribute('data-lightbox-src');
+        const title = button.getAttribute('data-lightbox-title') || '作品画像';
+        if (!src || !(dialog instanceof HTMLDialogElement) || !(dialogImage instanceof HTMLImageElement) || !dialogTitle) return;
+
+        dialogImage.removeAttribute('src');
+        dialogImage.alt = '';
+        dialogTitle.textContent = title;
+
+        const nextImage = new Image();
+        nextImage.src = src;
+        try {
+          await nextImage.decode();
+        } catch {
+          // Fall back to opening even if decode is unavailable or the image cannot be decoded.
+        }
+
+        dialogImage.src = src;
+        dialogImage.alt = `${title}の拡大画像`;
+        if (!dialog.open) dialog.showModal();
+      });
+    });
+
+    closeButton?.addEventListener('click', () => {
+      if (dialog instanceof HTMLDialogElement) dialog.close();
+    });
+
+    dialog?.addEventListener('click', (event) => {
+      if (event.target === dialog && dialog instanceof HTMLDialogElement) dialog.close();
+    });
+  </script>
+</BaseLayout>

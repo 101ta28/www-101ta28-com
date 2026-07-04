@@ -1,16 +1,10 @@
-<template>
-  <WorkComp :works="works" />
-</template>
-
-<script setup>
-const works = [
+export const works = [
   {
     id: 1,
     year: '2023',
-    img: 'img/shinkou_hp.webp',
+    img: '/img/shinkou_hp.webp',
     title: '不動産HPの改良',
     text: '住まいサポートデスク新篁のホームページ改良を行いました。既存システムを活用しつつ、ユーザビリティの向上を図りました。',
-    tech: '既存システム利用',
     techArray: ['既存システム'],
     category: 'Web開発',
     categoryColor: 'blue',
@@ -18,10 +12,9 @@ const works = [
   {
     id: 2,
     year: '2023',
-    img: 'img/gakuyusha_hp.webp',
+    img: '/img/gakuyusha_hp.webp',
     title: '会社HPの改良',
-    text: '株式会社学侑社のホームページ改良を行いました。コーポレートサイトとしての機能性と視認性を重視した設計を実施。',
-    tech: '既存システム利用',
+    text: '株式会社学侑社のホームページ改良を行いました。コーポレートサイトとしての機能性と視認性を重視した設計に注力しました。',
     techArray: ['既存システム'],
     category: 'Web開発',
     categoryColor: 'blue',
@@ -29,10 +22,9 @@ const works = [
   {
     id: 3,
     year: '2023',
-    img: 'img/borrow.webp',
+    img: '/img/borrow.webp',
     title: '社内システムの開発・運用',
     text: '社内システムの開発と運用を担当しました。Vue.jsでフロントエンド、FastAPIでバックエンドを構築し、Docker Composeで環境構築を行いました。',
-    tech: 'Vue, Python(FastAPI), Docker Compose',
     techArray: ['Vue.js', 'Python', 'FastAPI', 'Docker'],
     category: 'フルスタック開発',
     categoryColor: 'green',
@@ -42,7 +34,6 @@ const works = [
     year: '2022',
     title: '大手コンテンツのHP改良',
     text: 'チームでスケジュール機能の開発を担当しました。既存のPHPシステムに機能追加を行い、ユーザー体験の向上に貢献しました。',
-    tech: 'PHP',
     techArray: ['PHP'],
     category: 'Web開発',
     categoryColor: 'blue',
@@ -50,10 +41,9 @@ const works = [
   {
     id: 5,
     year: '2022',
-    img: 'img/42_intra.webp',
+    img: '/img/42_intra.webp',
     title: '42東京入学',
-    text: '42東京に入学し、ピア・ツー・ピア学習を通じてC言語とシェルスクリプトを学習しました。現在はブラックホール（時間切れによる退学）状態です。',
-    tech: 'C, Shell',
+    text: '42東京に入学し、ピア・ツー・ピア学習を通じてC言語とシェルスクリプト等を学習しました。現在はブラックホール（時間切れによる退学）状態です。',
     techArray: ['C', 'Shell'],
     category: '学習・教育',
     categoryColor: 'purple',
@@ -61,10 +51,9 @@ const works = [
   {
     id: 6,
     year: '2020',
-    img: 'img/sakito_hp.webp',
+    img: '/img/sakito_hp.webp',
     title: '学生向けアンケートサイトの保守管理',
     text: '株式会社CirKitにてSAKITOの新機能実装や保守管理を担当しました。Ruby on Railsを使用したWebアプリケーションの開発・運用に携わりました。',
-    tech: 'Ruby on Rails, MySQL',
     techArray: ['Ruby on Rails', 'MySQL'],
     category: 'Web開発',
     categoryColor: 'blue',
@@ -72,10 +61,9 @@ const works = [
   {
     id: 7,
     year: '2020',
-    img: 'img/cirkit_hp.webp',
+    img: '/img/cirkit_hp.webp',
     title: 'ホームページ改修',
     text: '株式会社CirKitのホームページをスマートフォン対応させました。ReactとTypeScriptを使用してレスポンシブデザインを実装しました。',
-    tech: 'React, TypeScript',
     techArray: ['React', 'TypeScript'],
     category: 'フロントエンド開発',
     categoryColor: 'orange',
@@ -83,10 +71,9 @@ const works = [
   {
     id: 8,
     year: '2019',
-    img: 'img/ar_paper.webp',
+    img: '/img/ar_paper.webp',
     title: '室内情報可視化の研究',
     text: 'ARを活用した室内情報可視化システムの研究開発を行いました。UnityとC#を使用してモバイルアプリケーションを開発しました。',
-    tech: 'Unity, C#, Java',
     techArray: ['Unity', 'C#', 'Java'],
     category: '研究開発',
     categoryColor: 'red',
@@ -96,11 +83,9 @@ const works = [
     year: '2025',
     title: 'AI沢みのり 開発プロジェクト',
     text: '金沢工業大学公認AIキャラクター「AI沢みのり」の開発に参加しました。開発者ページに記載のとおり、バックエンド開発（LAG+LLM）、大学情報収集、モデル選定・チューニングを担当しました。',
-    tech: 'LAG, LLM, モデル選定・チューニング',
     techArray: ['LAG', 'LLM', 'モデル選定', 'チューニング'],
     category: 'AI開発',
-    categoryColor: 'deep-purple',
+    categoryColor: 'purple',
     link: 'https://www.aizawaminori.com/developer',
   },
 ];
-</script>

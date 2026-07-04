@@ -1,0 +1,58 @@
+---
+const links = [
+  { href: '/', label: 'Home', external: false },
+  { href: '/work', label: 'Work', external: false },
+  { href: '/contact', label: 'Contact', external: false },
+  { href: 'https://blog.101ta28.com', label: 'Blog', external: true },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  return !href.startsWith('http') && currentPath.startsWith(href);
+};
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="101ta28 ホーム">
+      <img src="/img/ta28-icon.webp" alt="" width="32" height="32" />
+      <span>101ta28</span>
+    </a>
+
+    <nav class="nav-links" aria-label="メインナビゲーション">
+      {
+        links.map((link) => (
+          <a
+            class:list={['nav-link', { active: isActive(link.href), 'nav-link-external': link.external }]}
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noreferrer' : undefined}
+            aria-label={link.external ? `${link.label}を別サイトで開く` : undefined}
+            title={link.external ? `${link.label}を別サイトで開く` : undefined}
+          >
+            <span>{link.label}</span>
+            {link.external && <span class="nav-external-mark" aria-hidden="true">↗</span>}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button class="theme-toggle" type="button" aria-label="テーマを切り替え" title="テーマを切り替え">
+      <span aria-hidden="true" class="theme-icon theme-icon-light">☀</span>
+      <span aria-hidden="true" class="theme-icon theme-icon-dark">☾</span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('.theme-toggle');
+
+  toggle?.addEventListener('click', () => {
+    const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>

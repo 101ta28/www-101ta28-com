@@ -1,0 +1,11 @@
+---
+import { loadDefaultJapaneseParser } from 'budoux';
+
+const { text = '' } = Astro.props;
+const parser = loadDefaultJapaneseParser();
+const phrases = parser.parse(String(text));
+---
+
+<span class="phrase-text">
+  {phrases.map((phrase) => <span class="phrase-chunk">{phrase}</span>)}
+</span>

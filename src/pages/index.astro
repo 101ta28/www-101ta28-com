@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="101ta28 Site"
+  description="101ta28のポートフォリオサイトです。"
+  canonicalPath="/"
+>
+  <section class="hero section">
+    <div class="container hero-inner">
+      <img class="profile-image" src="/img/ta28-icon.webp" alt="今井 竜也のプロフィール画像" width="120" height="120" />
+      <p class="eyebrow">Web Developer & Software Engineer</p>
+      <h1>今井 竜也</h1>
+      <p class="hero-copy">
+        中学時代からプログラミングに魅力を感じ、現在はWebアプリケーション開発を中心に活動しています。
+      </p>
+      <div class="action-row">
+        <a class="button button-primary" href="/work">作品を見る</a>
+        <a class="button button-secondary" href="https://github.com/101ta28/resume" target="_blank" rel="noreferrer">履歴書</a>
+        <a class="button button-ghost" href="https://blog.101ta28.com" target="_blank" rel="noreferrer">ブログ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="section-heading">
+        <p class="eyebrow">About Me</p>
+        <h2>プロフィール</h2>
+      </div>
+      <div class="two-column">
+        <div class="card">
+          <h3>自己紹介</h3>
+          <p>
+            初めまして。今井 竜也と申します。中学時代にプログラミングに興味を持ち、なんやかんやで今に至ります。現在はWebアプリケーションの開発や、内製ツール作成、システム開発などを行っています。
+          </p>
+        </div>
+        <div class="card">
+          <h3>興味・関心</h3>
+          <div class="chip-list">
+            {['Web開発', 'フロントエンド', 'バックエンド', 'ツール開発', 'オープンソース'].map((item) => <span class="chip chip-outline">{item}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container narrow">
+      <div class="section-heading centered">
+        <p class="eyebrow">Skills</p>
+        <h2>技術スタック</h2>
+      </div>
+      <div class="skill-grid">
+        <article class="card">
+          <h3>フロントエンド</h3>
+          <div class="chip-list">
+            {['JavaScript', 'TypeScript', 'Vue', 'Vuetify', 'React', 'HTML/CSS'].map((item) => <span class="chip">{item}</span>)}
+          </div>
+        </article>
+        <article class="card">
+          <h3>バックエンド</h3>
+          <div class="chip-list">
+            {['Python', 'FastAPI', 'PHP', 'Ruby', 'Ruby on Rails', 'API設計・開発'].map((item) => <span class="chip">{item}</span>)}
+          </div>
+        </article>
+        <article class="card">
+          <h3>データベース・クラウド</h3>
+          <div class="chip-list">
+            {['MySQL', 'MongoDB', 'DynamoDB', 'AWS Lambda', 'API Gateway', 'S3', 'Amplify', 'GCP'].map((item) => <span class="chip">{item}</span>)}
+          </div>
+        </article>
+        <article class="card">
+          <h3>ツール・その他</h3>
+          <div class="chip-list">
+            {['Linux', 'Ubuntu', 'Git', 'Docker', 'Docker Compose', 'VSCode'].map((item) => <span class="chip">{item}</span>)}
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="cta-panel">
+        <h2>お気軽にお声がけください</h2>
+        <div class="action-row">
+          <a class="button button-primary" href="/contact">お問い合わせ</a>
+          <a class="button button-secondary" href="https://github.com/101ta28" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

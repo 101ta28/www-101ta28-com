@@ -2,6 +2,7 @@
 node_modules
 bun.*
 /dist
+.astro
 .wrangler
 
 # local env files

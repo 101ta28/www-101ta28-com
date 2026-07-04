@@ -1,0 +1,49 @@
+---
+import PhraseText from './PhraseText.astro';
+
+const { work } = Astro.props;
+---
+
+<article class="work-card card" data-category={work.category} data-tech={work.techArray.join(',')}>
+  <div class="work-media">
+    {
+      work.img ? (
+        <button
+          class="work-image-button"
+          type="button"
+          data-lightbox-src={work.img}
+          data-lightbox-title={work.title}
+          aria-label={`${work.title}の画像を拡大表示`}
+        >
+          <img src={work.img} alt={`${work.title}のスクリーンショット`} loading="lazy" width="640" height="360" />
+          <span class="work-media-hint">拡大</span>
+        </button>
+      ) : (
+        <div class="work-media-placeholder" aria-hidden="true">No Image</div>
+      )
+    }
+    <div class="work-badges">
+      <span class="chip chip-primary">{work.year}</span>
+      <span class:list={['chip', 'chip-category', `chip-${work.categoryColor}`]}>{work.category}</span>
+    </div>
+  </div>
+
+  <div class="work-body">
+    <h2><PhraseText text={work.title} /></h2>
+    <p><PhraseText text={work.text} /></p>
+
+    <div class="tech-list" aria-label="使用技術">
+      {work.techArray.map((tech: string) => <span class="chip chip-outline">{tech}</span>)}
+    </div>
+  </div>
+
+  {
+    work.link && (
+      <div class="work-actions">
+        <a class="button button-secondary" href={work.link} target="_blank" rel="noreferrer">
+          詳細
+        </a>
+      </div>
+    )
+  }
+</article>

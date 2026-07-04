@@ -1,0 +1,60 @@
+---
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+
+const {
+  title = '101ta28 Site',
+  description = '101ta28のポートフォリオサイトです。',
+  canonicalPath = '/',
+  robots = 'index,follow',
+} = Astro.props;
+
+const siteUrl = 'https://www.101ta28.com';
+const canonicalUrl = new URL(canonicalPath, siteUrl).href;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="me" href="https://github.com/101ta28" />
+    <meta property="og:site_name" content="101ta28 Site" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${siteUrl}/img/ta28-icon.webp`} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/img/ta28-icon.webp`} />
+    <title>{title}</title>
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+        } catch {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <small>&copy; 101ta28</small>
+      </div>
+    </footer>
+  </body>
+</html>

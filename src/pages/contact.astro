@@ -1,0 +1,83 @@
+---
+import { gpgFingerprint, gpgPublicKey, socialLinks } from '../data/contact.js';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact | 101ta28 Site"
+  description="101ta28への連絡先と各種プロフィールリンクです。"
+  canonicalPath="/contact"
+>
+  <section class="page-hero section contact-hero">
+    <div class="container narrow centered">
+      <p class="eyebrow">Contact</p>
+      <h1>Contact</h1>
+      <p>お気軽にお声がけください。</p>
+    </div>
+  </section>
+
+  <section class="section contact-links-section">
+    <div class="container narrow">
+      <div class="section-heading centered">
+        <h2>連絡手段・SNS</h2>
+      </div>
+      <div class="contact-grid">
+        {
+          socialLinks.map((contact) => (
+            <a class="contact-card card" href={contact.link} target="_blank" rel="noreferrer">
+              <div class="contact-card-heading">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d={contact.icon}></path>
+                  </svg>
+                </span>
+                <h3>{contact.title}</h3>
+              </div>
+              <p>{contact.description}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted contact-security-section">
+    <div class="container narrow">
+      <details class="gpg-panel card">
+        <summary>
+          <span>GPG暗号化情報</span>
+          <span class="chip chip-outline">セキュリティ</span>
+        </summary>
+        <p>セキュアな通信をご希望の場合は、GPG暗号化をご利用ください。</p>
+
+        <div class="copy-field">
+          <label for="fingerprint">Fingerprint</label>
+          <div class="copy-row">
+            <input id="fingerprint" readonly value={gpgFingerprint} />
+            <button class="button button-secondary copy-button" type="button" data-copy={gpgFingerprint}>コピー</button>
+          </div>
+        </div>
+
+        <div class="copy-field">
+          <label for="public-key">公開鍵</label>
+          <textarea id="public-key" readonly rows="14">{gpgPublicKey}</textarea>
+          <button class="button button-secondary copy-button" type="button" data-copy={gpgPublicKey}>公開鍵をコピー</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.copy-button').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const text = button.getAttribute('data-copy') || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          button.textContent = 'コピーしました';
+        } catch {
+          button.textContent = '選択してコピーしてください';
+        }
+      });
+    });
+  </script>
+</BaseLayout>

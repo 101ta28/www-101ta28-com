@@ -6,7 +6,7 @@ preview_urls = false
 [assets]
 directory = "./dist"
 html_handling = "auto-trailing-slash"
-not_found_handling = "single-page-application"
+not_found_handling = "404-page"
 
 # Environment variables can be added here if needed
 # [vars]
